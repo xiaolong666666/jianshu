@@ -17,7 +17,10 @@ export default {
       antd: true,
       dva: true,
       dynamicImport: { webpackChunkName: true },
-      title: 'jianshu',
+      title: '简书 - 创作你的创作',
+      links: [
+        { rel: 'icon', href: '<%= PUBLIC_PATH %>assets/favicon.ico' },
+      ],
       dll: true,
       locale: {
         enable: true,

@@ -87,7 +87,7 @@ class Header extends Component {
                                 </div>
                             </BetaDiv>
                             <NavItem className="right" onClick={() =>{ dispatch({ type: 'Aa/AaShow' }) }}><span className="iconfont">&#xe655;</span></NavItem>
-                            <CSSTransition in={AaFlag} timeout={200} classNames="Aaslide">
+                            {AaFlag ? <CSSTransition in={AaFlag} timeout={200} classNames="Aaslide">
                                 <Aa className={AaStyle} onClick={() => { dispatch({ type: 'Aa/AaHide' }) }}>
                                     <div className="night">
                                         <h4><span className="iconfont">&#xe603;</span>夜间模式</h4>
@@ -102,7 +102,7 @@ class Header extends Component {
                                         <button onClick={() => { dispatch({ type: 'Aa/simpleHide' }) }} className={simpleFlag ? "" : "selected"}>繁</button>
                                     </div>
                                 </Aa>
-                            </CSSTransition>
+                            </CSSTransition> : null } 
                             <SearchWrapper>
                                 <CSSTransition in={searchFlag} timeout={200} classNames="slide">
                                     <NavSearch className={searchStyle} onFocus={() => { if (!hot) { dispatch({ type: 'search/hot'})};dispatch({ type: 'search/focus' }); }} onBlur={() => { dispatch({ type: 'search/blur' }) }}>

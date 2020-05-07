@@ -7,8 +7,10 @@ export const HeaderDiv = styled.div`
     position: fixed;
     top: 0px;
     width: 100%;
+    height: 56px;
     border-bottom: 1px solid #f0f0f0;
     background-color: #fff;
+    z-index: 999;
     &.song{
         font-family: Georgia,Times New Roman,Times,Songti SC,serif
     }
@@ -140,7 +142,7 @@ export const BetaDiv = styled.div`
 // Aa设置部分
 export const Aa = styled.div`
     position: absolute;
-    top: 48px;
+    top: 46px;
     right: 378px;
     width: 237px;
     padding: 20px;
@@ -149,28 +151,29 @@ export const Aa = styled.div`
     background-color: #fff;
     color: #969696;
     opacity: 0;
+    z-index: 99;
     &.show{
         opacity: 1;
     }
     &.Aaslide-enter{
-        top: 48px;
+        top: 46px;
         transition: all .2s ease-out;
     }
     &.Aaslide-enter-active{
-        top: 58px;
+        top: 56px;
     }
     &.Aaslide-enter-done{
-        top: 58px;
+        top: 56px;
     }
     &.Aaslide-exit{
-        top: 58px;
+        top: 56px;
         transition: all .2s ease-out;
     }
     &.Aaslide-exit-active{
-        top: 48px;
+        top: 46px;
     }
     &.Aaslide-exit-done{
-        top: 48px;
+        top: 46px;
     }
     ::after{
         display: block;
@@ -338,7 +341,7 @@ export const NavSearch = styled.input.attrs({
 export const SearchInfo = styled.div`
     position: absolute;
     left: 20px;
-    top: 58px;
+    top: 56px;
     width: 250px;
     padding: 16px 10px;
     border-radius: 4px;
@@ -347,6 +350,7 @@ export const SearchInfo = styled.div`
     background-color: #fff;
     font-size: 17px;
     line-height: 20px;
+    z-index: 99;
     &.night{
         background-color: #3f3f3f;
         color: #c8c8c8;
