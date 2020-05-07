@@ -83,7 +83,7 @@ export default {
         *'hot'({payload},{call,put}){
             try{
                 const hot = yield call(axios.get, '/api/hot');
-                yield put({ type: 'hotsuccess', hot: hot.data.hotlist.data });
+                yield put({ type: 'hotsuccess', hot: hot.data.hotList.data });
             }catch(error){
                 yield put({ type: 'hoterror', error });
             }

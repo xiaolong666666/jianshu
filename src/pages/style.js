@@ -202,3 +202,25 @@ export const RecommendAppTips = styled.div`
     }
 `;
 
+// 推荐作者
+export const AuthorWrapper = styled.div`
+    color: #969696;
+    font-size: 14px;
+`;
+
+// 推荐作者标题
+export const AuthorHeader = styled.div`
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    div{
+        float: right;
+        cursor: pointer;
+        .iconfont{
+            float: left;
+            margin-right: 2px;
+            transition: all .2s ease-in;
+        }
+    }
+
+`;
