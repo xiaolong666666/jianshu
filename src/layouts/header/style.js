@@ -33,9 +33,7 @@ export const HeaderWrapper = styled.div`
 `;
 
 // logo
-export const Logo = styled.a.attrs({
-    href: '/'
-})`
+export const Logo = styled.div`
     position: absolute;
     display: inline-block;
     width: 100px;

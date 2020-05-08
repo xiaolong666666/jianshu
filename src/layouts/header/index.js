@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'dva'
 import { CSSTransition } from 'react-transition-group'
+import Link from 'umi/link'
 import { HeaderDiv, HeaderWrapper, Logo, Nav, NavItem, SearchWrapper, NavSearch, SearchInfo, SearchChange, HotList, Hot, BetaDiv, Aa, Addition, Button } from './style'
 import { IconGlobal } from './../../assets/fonts/iconfont'
 import twocode from './../../assets/imgs/twocode.png'
@@ -73,7 +74,7 @@ class Header extends Component {
                 <HeaderDiv className={headerstyle}>
                     <IconGlobal />
                     <HeaderWrapper>
-                        <Logo></Logo>
+                        <Link to="/"><Logo></Logo></Link>
                         {/* Nav开始 */}
                         <Nav>
                             <NavItem className="left active"><span className="iconfont">&#xe6f7;</span>首页</NavItem>

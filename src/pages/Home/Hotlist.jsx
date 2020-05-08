@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import { connect } from 'dva'
+import Link from 'umi/link'
 import { ArticleWrapper, ArticleHeader, ArticleContent, ArticleFooter, ReadMore } from './../style'
 import { IconGlobal } from './../../assets/fonts/iconfont'
 
@@ -18,18 +19,20 @@ class Hotlist extends Component {
                 <IconGlobal />
                 {
                     article.map((item,index)=>{
-                        return <ArticleWrapper key={index} className={fontstyle + nightstyle}>
-                                    <div className="pic"><img src={item.pic} alt="图片加载错误" /></div>
-                                    <ArticleHeader className={fontstyle + nightstyle}>{item.title}</ArticleHeader>
-                                    <ArticleContent>{item.show}</ArticleContent>
-                                    <ArticleFooter>
-                                        <div className="jsz"><span className="iconfont">&#xe601;</span>{item.like}</div>
-                                        <div className="change">{item.author}</div>
-                                        <div className="change"><span className="iconfont">&#xe604;</span>{item.commentary}</div>
-                                        <div><span className="iconfont">&#xe600;</span>{item.love}</div>
-                                        <div><span className="iconfont">&#xe611;</span>{item.reward}</div>
-                                    </ArticleFooter>
-                                </ArticleWrapper>
+                        return <Link key={index} to={'/detail?id='+index}>
+                                    <ArticleWrapper className={fontstyle + nightstyle}>
+                                        <div className="pic"><img src={item.pic} alt="图片加载错误" /></div>
+                                        <ArticleHeader className={fontstyle + nightstyle}>{item.title}</ArticleHeader>
+                                        <ArticleContent>{item.show}</ArticleContent>
+                                        <ArticleFooter>
+                                            <div className="jsz"><span className="iconfont">&#xe601;</span>{item.like}</div>
+                                            <div className="change">{item.author}</div>
+                                            <div className="change"><span className="iconfont">&#xe604;</span>{item.commentary}</div>
+                                            <div><span className="iconfont">&#xe600;</span>{item.love}</div>
+                                            <div><span className="iconfont">&#xe611;</span>{item.reward}</div>
+                                        </ArticleFooter>
+                                    </ArticleWrapper>
+                                </Link>
                     })
                 }
                 <ReadMore onClick={() => { dispatch({ type: 'article/more', payload: page }) }}>阅读更多</ReadMore>
