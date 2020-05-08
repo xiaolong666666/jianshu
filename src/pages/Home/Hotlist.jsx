@@ -5,18 +5,22 @@ import { ArticleWrapper, ArticleHeader, ArticleContent, ArticleFooter, ReadMore 
 import { IconGlobal } from './../../assets/fonts/iconfont'
 
 class Hotlist extends Component {
+    
     render() {
         let { dispatch } = this.props;
         let { article, page } = this.props.article;
+        let { nightFlag, songFont } = this.props.Aa;
+        let fontstyle = songFont ? "song " : "hei ";
+        let nightstyle = nightFlag ? "night" : "";
         return (
             article
             ?<div>
                 <IconGlobal />
                 {
                     article.map((item,index)=>{
-                        return <ArticleWrapper key={index}>
+                        return <ArticleWrapper key={index} className={fontstyle + nightstyle}>
                                     <div className="pic"><img src={item.pic} alt="图片加载错误" /></div>
-                                    <ArticleHeader>{item.title}</ArticleHeader>
+                                    <ArticleHeader className={fontstyle + nightstyle}>{item.title}</ArticleHeader>
                                     <ArticleContent>{item.show}</ArticleContent>
                                     <ArticleFooter>
                                         <div className="jsz"><span className="iconfont">&#xe601;</span>{item.like}</div>
@@ -33,6 +37,8 @@ class Hotlist extends Component {
             : null
         );
     }
+
+    // 获取最新文章信息
     componentDidMount(){
         let { dispatch } = this.props;
         axios.get("/api/article")
@@ -47,7 +53,8 @@ class Hotlist extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        article: state.article
+        article: state.article,
+        Aa: state.Aa
     }
 }
 

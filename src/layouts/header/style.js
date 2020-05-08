@@ -18,6 +18,7 @@ export const HeaderDiv = styled.div`
         font-family: -apple-system,SF UI Display,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif
     }
     &.night{
+        border-bottom: 1px solid #2f2f2f;
         background-color: #3f3f3f;
         color: #c8c8c8;
     }

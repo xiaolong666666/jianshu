@@ -1,5 +1,19 @@
 import styled from 'styled-components'
 
+// 最外层
+export const IndexDiv = styled.div`
+    &.song{
+        font-family: Georgia,Times New Roman,Times,Songti SC,serif
+    }
+    &.hei{
+        font-family: -apple-system,SF UI Display,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif
+    }
+    &.night{
+        background-color: #3f3f3f;
+        color: #c8c8c8;
+    }
+`;
+
 //主体部分
 export const IndexWrapper = styled.div`
     overflow: hidden;
@@ -30,6 +44,9 @@ export const ArticleWrapper = styled.div`
     color: #999;
     font-size: 17px;
     line-height: 20px;
+    &.night{
+        border-bottom: 1px solid #2f2f2f;
+    }
     .pic{
         overflow: hidden;
         float: right;
@@ -52,6 +69,9 @@ export const ArticleHeader = styled.div`
     font-size: 18px;
     font-weight: 700;
     line-height: 1.5em;
+    &.night{
+        color: #c8c8c8;
+    }
 `;
 
 // 文章简介
@@ -133,6 +153,9 @@ export const RecommendApp = styled.a.attrs({
     border-radius: 6px;
     background-color: #fff;
     cursor: pointer;
+    &.night{
+        background-color: #eee;
+    }
     img{
         float: left;
         width: 60px;
@@ -256,11 +279,14 @@ export const AuthorFace = styled.div`
 export const AuthorIntroduction = styled.div`
     float: left;
     line-height: 20px;
+    color: #333;
     header{
         padding-top: 5px;
-        color: #333;
         font-size: 14px;
         cursor: pointer;
+        &.night{
+            color: #c8c8c8 !important;
+        }
     }
     p{
         margin: 2px 0px 10px;
@@ -301,6 +327,16 @@ export const AuthorAll = styled.a.attrs({
         background-color: #f7f7f7;
         transform: rotate(135deg);
     }
+    &.night{
+        background-color: #4A4A4A;
+        color: #c8c8c8;
+        ::after{
+            background-color: #4A4A4A;
+            border: 1px solid #c8c8c8;
+            border-bottom: 1px solid transparent;
+            border-right: 1px solid transparent;
+        }
+    }
     :hover{
         color: #787878;
     }
@@ -323,9 +359,14 @@ export const IndexLink = styled.div`
         left: -7px;
         top: 8px;
         content: '';
-        width: 2px;
-        height: 2px;
+        width: 4px;
+        height: 4px;
         background-color: #fff;
+    }
+    &.night{
+        ::after{
+            background-color: #3f3f3f;
+        }
     }
 `;
 
@@ -360,6 +401,7 @@ export const IndexCopy = styled.div`
     line-height: 30px;
 `;
 
+// 首页底部版权信息图片链接
 export const CopyPic = styled.a.attrs({
     target: '_blank'
 })`
@@ -390,4 +432,58 @@ export const CopyPic = styled.a.attrs({
         background: url('http://cdn2.jianshu.io/assets/web/zggsrz-5695587dccf490ca3e651f4228f7479e.png') no-repeat;
         background-size: contain;
     }
-`
+`;
+
+// 回顶部
+export const BackTop = styled.div`
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #f0f0f0;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    &.night{
+        border: 1px solid #2f2f2f;
+        :hover{
+            background-color: #3f3f3f;
+        }
+    }
+    .iconfont{
+        position: absolute;
+        left: 0%;
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+        transform: rotate(180deg);
+    }
+    :hover{
+        background-color: #f7f7f7;
+    }
+`;
+
+// 回首页提示
+export const BackTopTips = styled.div`
+    position: fixed;
+    right: 108px;
+    bottom: 60px;
+    padding: 8px 10px;
+    border-radius: 4px;
+    background-color: #000;
+    color: #fff;
+    font-size: 14px;
+    ::after{
+        position: absolute;
+        top: 10px;
+        right: -3px;
+        display: inline-block;
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: #000;
+        transform: rotate(45deg);
+    }
+    
+`;

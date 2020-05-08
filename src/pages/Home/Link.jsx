@@ -4,11 +4,15 @@ import { connect } from 'dva'
 import { IndexLink, IndexLinkItem } from './../style';
 
 class Link extends Component {
+    
     render() {
         let { link } = this.props.link;
+        let { nightFlag, songFont } = this.props.Aa;
+        let fontstyle = songFont ? "song " : "hei ";
+        let nightstyle = nightFlag ? "night" : "";
         return (
             link
-            ? <IndexLink>
+            ? <IndexLink className={fontstyle + nightstyle}>
                 {
                     link.map(item => {
                         return <IndexLinkItem key={item.id} href={item.url}>{item.title}</IndexLinkItem>
@@ -18,6 +22,8 @@ class Link extends Component {
             : null
         );
     }
+
+    // 获取链接信息
     componentDidMount(){
         let { dispatch } = this.props;
         axios.get('/api/link')
@@ -32,7 +38,8 @@ class Link extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        link: state.link
+        link: state.link,
+        Aa: state.Aa
     }
 }
 

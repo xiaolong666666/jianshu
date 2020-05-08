@@ -4,18 +4,25 @@ import axios from 'axios'
 import { RecommendWrapper, RecommendItem, RecommendApp, RecommendAppTips } from './../style'
 
 class Recommend extends Component {
+    
     render() {
         let { dispatch } = this.props;
         let { recommend, AppFlag } = this.props.recommend;
+        let { nightFlag } = this.props.Aa;
+        let nightstyle = nightFlag ? "night" : "";
         return (
             recommend
             ? <RecommendWrapper>
+                {/* 分类部分开始 */}
                 {
                     recommend.map(item=>{
                         return <RecommendItem key={item.id} imgURL={item.imgURL}></RecommendItem>
                     })
                 }
-                <RecommendApp 
+                {/* 分类部分结束 */}
+
+                {/* App二维码部分开始 */}
+                <RecommendApp className={nightstyle}
                     onMouseOver={() => { dispatch({ type: 'recommend/changeAppFlag' }) }}
                     onMouseOut={() => { dispatch({ type: 'recommend/changeAppFlag' }) }}
                     >
@@ -25,6 +32,9 @@ class Recommend extends Component {
                         <p>随时随地发现和创作内容</p>
                     </div>
                 </RecommendApp>
+                {/* App二维码部分结束 */}
+
+                {/* App二维码提示部分开始 */}
                 {
                     AppFlag
                     ? <RecommendAppTips>
@@ -32,10 +42,13 @@ class Recommend extends Component {
                     </RecommendAppTips>
                     : null
                 }
+                {/* App二维码提示部分结束 */}
             </RecommendWrapper>
             : null
         );
     }
+
+    // 获取推荐信息
     componentDidMount(){
         let { dispatch } = this.props;
         axios.get("/api/recommend")
@@ -50,7 +63,8 @@ class Recommend extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        recommend: state.recommend
+        recommend: state.recommend,
+        Aa: state.Aa
     }
 }
 
