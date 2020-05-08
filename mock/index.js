@@ -3,6 +3,7 @@ const article = require('./articleList.json');
 const articlemore = require('./articleMore.json');
 const recommend = require('./recommend.json');
 const author = require('./author.json');
+const link = require('./link.json');
 
 export default {
     //热门搜索
@@ -14,5 +15,7 @@ export default {
     // 推荐
     "GET /api/recommend": (req, res) => { res.status(200).json({ recommendList: recommend }) },
     // 推荐作者
-    "GET /api/author": (req, res) => { res.status(200).json({ authorList: author}) }
+    "GET /api/author": (req, res) => { res.status(200).json({ authorList: author}) },
+    // 首页底部链接
+    "GET /api/link": (req, res) => { res.status(200).json({ linkList: link }) },
 }
