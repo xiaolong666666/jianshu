@@ -62,7 +62,7 @@ export const NavItem = styled.div`
         float: right;
         color: #999;
     }
-    &.login{
+    &.login,&.out{
         font-size: 15px;
     }
     &.beta{

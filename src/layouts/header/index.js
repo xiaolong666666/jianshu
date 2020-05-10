@@ -62,6 +62,7 @@ class Header extends Component {
         let { dispatch } = this.props;
         let { searchFlag, betaFlag, hot } = this.props.search;
         let { AaFlag, nightFlag, songFont, simpleFlag } = this.props.Aa;
+        let { loginFlag } = this.props.login;
         let Aastyle = AaFlag ? "show " : "";
         let fontstyle = songFont ? "song " : "hei ";
         let searchstyle = searchFlag ? "focus " : "";
@@ -79,7 +80,7 @@ class Header extends Component {
                         <Nav>
                             <NavItem className="left active"><span className="iconfont">&#xe6f7;</span>首页</NavItem>
                             <NavItem className="left"><span className="iconfont">&#xe625;</span>下载App</NavItem>
-                            <NavItem className="right login">登录</NavItem>
+                            {loginFlag ? <Link to='/'><NavItem className="right out" onClick={() => { dispatch({ type: 'login/no' }) }}>退出</NavItem></Link> : <Link to='/sign/Sign_in'><NavItem className="right login">登录</NavItem></Link>}
                             <NavItem className="right beta" onClick={() => { dispatch({ type: 'search/betaOk' }) }}></NavItem>
                             {/* 隐藏的beta开始 */}
                             <BetaDiv style={{display : betaFlag ? "block" : "none"}}>
@@ -123,7 +124,7 @@ class Header extends Component {
                         {/* Nav结束 */}
                         <Addition>
                             <Button className="writing"><span className="iconfont">&#xe616;</span>写文章</Button>
-                            <Button className="reg">注册</Button>
+                            <Link to="/sign/Sign_up"><Button className="reg">注册</Button></Link>
                         </Addition>
                     </HeaderWrapper>
                 </HeaderDiv>
@@ -135,7 +136,8 @@ class Header extends Component {
 const mapStateToProps = (state) => {
     return {
         search: state.search,
-        Aa: state.Aa
+        Aa: state.Aa,
+        login: state.login
     }
 }
 
