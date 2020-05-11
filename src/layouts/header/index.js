@@ -78,8 +78,8 @@ class Header extends Component {
                         <Link to="/"><Logo></Logo></Link>
                         {/* Nav开始 */}
                         <Nav>
-                            <NavItem className="left active"><span className="iconfont">&#xe6f7;</span>首页</NavItem>
-                            <NavItem className="left"><span className="iconfont">&#xe625;</span>下载App</NavItem>
+                            <Link to="/"><NavItem className="left active"><span className="iconfont">&#xe6f7;</span>首页</NavItem></Link>
+                            <NavItem className="left downApp"><span className="iconfont">&#xe625;</span>下载App</NavItem>
                             {loginFlag ? <Link to='/'><NavItem className="right out" onClick={() => { dispatch({ type: 'login/no' }) }}>退出</NavItem></Link> : <Link to='/sign/Sign_in'><NavItem className="right login">登录</NavItem></Link>}
                             <NavItem className="right beta" onClick={() => { dispatch({ type: 'search/betaOk' }) }}></NavItem>
                             {/* 隐藏的beta开始 */}
@@ -123,7 +123,7 @@ class Header extends Component {
                         </Nav>
                         {/* Nav结束 */}
                         <Addition>
-                            <Button className="writing"><span className="iconfont">&#xe616;</span>写文章</Button>
+                            <Link to="/write"><Button className="writing"><span className="iconfont">&#xe616;</span>写文章</Button></Link>
                             <Link to="/sign/Sign_up"><Button className="reg">注册</Button></Link>
                         </Addition>
                     </HeaderWrapper>

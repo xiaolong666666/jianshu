@@ -19,7 +19,7 @@ class Hotlist extends Component {
                 <IconGlobal />
                 {
                     article.map((item,index)=>{
-                        return <Link key={index} to={'/detail?id='+index}>
+                        return <Link key={index} to={'/detail/'+index}>
                                     <ArticleWrapper className={fontstyle + nightstyle}>
                                         <div className="pic"><img src={item.pic} alt="图片加载错误" /></div>
                                         <ArticleHeader className={fontstyle + nightstyle}>{item.title}</ArticleHeader>

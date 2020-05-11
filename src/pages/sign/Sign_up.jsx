@@ -68,7 +68,7 @@ class Sign_up extends Component {
         let userName = this.refs.userName.value;
         let userPhone = this.refs.userPhone.value;
         let userPwd = this.refs.userPwd.value;
-        axios.post("/api/users/create",{
+        axios.post("/api/create",{
             userName,
             userPhone,
             userPwd

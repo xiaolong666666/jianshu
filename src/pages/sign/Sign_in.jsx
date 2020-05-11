@@ -25,7 +25,7 @@ class Sign_in extends Component {
         let { dispatch } = this.props;
         let userName = this.refs.userName.value;
         let userPwd = this.refs.userPwd.value;
-        axios.post("/api/users/login",{
+        axios.post("/api/login",{
             userName,
             userPwd
         }).then(res => {
@@ -36,6 +36,7 @@ class Sign_in extends Component {
             }
         })
     }
+    
     render() {
         let { handdle, handdleSignin } = this;
         let { loginFlag, msg } = this.props.login;

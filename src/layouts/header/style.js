@@ -21,6 +21,11 @@ export const HeaderDiv = styled.div`
         border-bottom: 1px solid #2f2f2f;
         background-color: #3f3f3f;
         color: #c8c8c8;
+        .downApp{
+            :hover{
+                background-color: #2f2f2f;
+            }
+        }
     }
 `;
 
@@ -64,6 +69,11 @@ export const NavItem = styled.div`
     }
     &.login,&.out{
         font-size: 15px;
+    }
+    &.downApp{
+        :hover{
+            background-color: #f5f5f5;
+        }
     }
     &.beta{
         width: 56px;
