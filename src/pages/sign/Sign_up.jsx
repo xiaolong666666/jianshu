@@ -73,7 +73,6 @@ class Sign_up extends Component {
             userPhone,
             userPwd
         }).then(res=>{
-            console.log(res);
             if(res.data.status==="10001"){
                 router.push('/sign/Sign_in');
             }

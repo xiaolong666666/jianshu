@@ -184,6 +184,7 @@ export const Signup = styled.button`
     color: #fff;
     font-size: 18px;
     line-height: 26px;
+    cursor: pointer;
 `;
 
 // 登录按钮
@@ -194,10 +195,10 @@ export const Signin = styled.button`
     padding: 9px 18px;
     border: none;
     border-radius: 25px;
-    background-color: #42c02e;
     color: #fff;
     font-size: 18px;
     line-height: 26px;
+    cursor: pointer;
     background-color: #3194d0;
 `;
 
