@@ -2,22 +2,17 @@
 // ref: https://umijs.org/config/
 export default {
   treeShaking: true,
-  routes: [
-    {
-      path: '/',
-      component: '../layouts/index',
-      routes: [
-        { path: '/', component: '../pages/index' }
-      ]
-    }
-  ],
+  publicPath: './',
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
       antd: true,
       dva: true,
       dynamicImport: { webpackChunkName: true },
-      title: 'jianshu',
+      title: '简书 - 创作你的创作',
+      links: [
+        { rel: 'icon', href: '<%= PUBLIC_PATH %>assets/favicon.ico' },
+      ],
       dll: true,
       locale: {
         enable: true,

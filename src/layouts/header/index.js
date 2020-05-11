@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'dva'
 import { CSSTransition } from 'react-transition-group'
+import Link from 'umi/link'
 import { HeaderDiv, HeaderWrapper, Logo, Nav, NavItem, SearchWrapper, NavSearch, SearchInfo, SearchChange, HotList, Hot, BetaDiv, Aa, Addition, Button } from './style'
 import { IconGlobal } from './../../assets/fonts/iconfont'
 import twocode from './../../assets/imgs/twocode.png'
@@ -12,12 +13,14 @@ class Header extends Component {
         this.rotate = this.rotate.bind(this);
     }
     
+    // 旋转图标
     rotate(){
         let deg = this.refs.rotate.style.transform.replace(/[^0-9]/ig,'');
         deg = deg ? parseInt(deg,10) : 0 ;
         this.refs.rotate.style.transform = "rotate("+(deg+360)+"deg)";
     }
 
+    // 热门搜索列表
     getHotList(){
         let { rotate } = this;
         let { dispatch } = this.props;
@@ -59,6 +62,7 @@ class Header extends Component {
         let { dispatch } = this.props;
         let { searchFlag, betaFlag, hot } = this.props.search;
         let { AaFlag, nightFlag, songFont, simpleFlag } = this.props.Aa;
+        let { loginFlag } = this.props.login;
         let Aastyle = AaFlag ? "show " : "";
         let fontstyle = songFont ? "song " : "hei ";
         let searchstyle = searchFlag ? "focus " : "";
@@ -71,12 +75,14 @@ class Header extends Component {
                 <HeaderDiv className={headerstyle}>
                     <IconGlobal />
                     <HeaderWrapper>
-                        <Logo></Logo>
+                        <Link to="/"><Logo></Logo></Link>
+                        {/* Nav开始 */}
                         <Nav>
-                            <NavItem className="left active"><span className="iconfont">&#xe6f7;</span>首页</NavItem>
-                            <NavItem className="left"><span className="iconfont">&#xe625;</span>下载App</NavItem>
-                            <NavItem className="right login">登录</NavItem>
+                            <Link to="/"><NavItem className="left active"><span className="iconfont">&#xe6f7;</span>首页</NavItem></Link>
+                            <NavItem className="left downApp"><span className="iconfont">&#xe625;</span>下载App</NavItem>
+                            {loginFlag ? <Link to='/'><NavItem className="right out" onClick={() => { dispatch({ type: 'login/no' }) }}>退出</NavItem></Link> : <Link to='/sign/Sign_in'><NavItem className="right login">登录</NavItem></Link>}
                             <NavItem className="right beta" onClick={() => { dispatch({ type: 'search/betaOk' }) }}></NavItem>
+                            {/* 隐藏的beta开始 */}
                             <BetaDiv style={{display : betaFlag ? "block" : "none"}}>
                                 <div className="shade"></div>
                                 <div className="betatips">
@@ -86,8 +92,10 @@ class Header extends Component {
                                     <button onClick={() => { dispatch({ type: 'search/betaNo' }) }}>我知道了</button>
                                 </div>
                             </BetaDiv>
+                            {/* 隐藏的beta结束 */}
                             <NavItem className="right" onClick={() =>{ dispatch({ type: 'Aa/AaShow' }) }}><span className="iconfont">&#xe655;</span></NavItem>
-                            <CSSTransition in={AaFlag} timeout={200} classNames="Aaslide">
+                            {/* Aa样式框开始 */}
+                            {AaFlag ? <CSSTransition in={AaFlag} timeout={200} classNames="Aaslide">
                                 <Aa className={AaStyle} onClick={() => { dispatch({ type: 'Aa/AaHide' }) }}>
                                     <div className="night">
                                         <h4><span className="iconfont">&#xe603;</span>夜间模式</h4>
@@ -102,7 +110,8 @@ class Header extends Component {
                                         <button onClick={() => { dispatch({ type: 'Aa/simpleHide' }) }} className={simpleFlag ? "" : "selected"}>繁</button>
                                     </div>
                                 </Aa>
-                            </CSSTransition>
+                            </CSSTransition> : null } 
+                            {/* Aa样式框结束 */}
                             <SearchWrapper>
                                 <CSSTransition in={searchFlag} timeout={200} classNames="slide">
                                     <NavSearch className={searchStyle} onFocus={() => { if (!hot) { dispatch({ type: 'search/hot'})};dispatch({ type: 'search/focus' }); }} onBlur={() => { dispatch({ type: 'search/blur' }) }}>
@@ -112,9 +121,10 @@ class Header extends Component {
                                 {getHotList()}
                             </SearchWrapper>
                         </Nav>
+                        {/* Nav结束 */}
                         <Addition>
-                            <Button className="writing"><span className="iconfont">&#xe616;</span>写文章</Button>
-                            <Button className="reg">注册</Button>
+                            <Link to="/write"><Button className="writing"><span className="iconfont">&#xe616;</span>写文章</Button></Link>
+                            <Link to="/sign/Sign_up"><Button className="reg">注册</Button></Link>
                         </Addition>
                     </HeaderWrapper>
                 </HeaderDiv>
@@ -126,7 +136,8 @@ class Header extends Component {
 const mapStateToProps = (state) => {
     return {
         search: state.search,
-        Aa: state.Aa
+        Aa: state.Aa,
+        login: state.login
     }
 }
 
