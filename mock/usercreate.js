@@ -1,6 +1,6 @@
 import Mock from 'mockjs' 
 // Mock响应模板
-Mock.mock('/api/users/create', 'post', function (options) {
+Mock.mock('/api/create', 'post', function (options) {
     //获取json字符串-->转化成js对象
     let userName = JSON.parse(options.body).userName;
     if (userName === "tom") {
